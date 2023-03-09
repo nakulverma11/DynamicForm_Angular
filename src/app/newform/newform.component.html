@@ -1,0 +1,254 @@
+<div class="container1">
+    <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+        <mat-tab label="Service Billing">
+            <form [formGroup]="form1">
+                <div class="fields">
+                    <div class="sub_field">
+                        <h4>Service Package</h4>
+                        <mat-radio-group formControlName="field1">
+                            <mat-radio-button value="Service">Service</mat-radio-button>
+                            <mat-radio-button value="Package">Package</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                    <div class="sub_field">
+                        <h4>Service Category / Package</h4>
+                        <mat-form-field appearance="fill">
+                            <mat-select formControlName="field2" (valueChange)="onSelect($event)">
+                                <mat-option value="" disabled>Select Service Category</mat-option>
+                                <mat-option *ngFor="let cat of serviceCat" [value]="cat.catName">
+                                    {{cat.catName}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error
+                                *ngIf="(form1.controls.field2.invalid && isFormSubmitted && !form1.controls.field2.dirty) || (form1.controls.field2.touched && !form1.controls.field2.dirty)">
+                                *Service Category / Package is required.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="sub_field">
+                        <h4>Service</h4>
+                        <mat-form-field appearance="fill">
+                            <mat-select formControlName="field3">
+                                <mat-option value="" disabled>Select Service</mat-option>
+                                <mat-option *ngFor="let ser of serviceType" [value]="ser.name">
+                                    {{ser.name}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error
+                                *ngIf="(form1.controls.field3.invalid && isFormSubmitted && !form1.controls.field3.dirty) || (form1.controls.field3.touched && !form1.controls.field3.dirty)">
+                                *Service is required.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="sub_field cust">
+                        <mat-form-field appearance="fill">
+                            <input matInput readonly="true" placeholder="Tariff" formControlName="field4">
+                            <mat-error
+                                *ngIf="(form1.controls.field4.invalid && isFormSubmitted && !form1.controls.field4.dirty) || (form1.controls.field4.touched && !form1.controls.field4.dirty)">
+                                *Field is required.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="sub_field">
+                        <mat-form-field appearance="fill">
+                            <input matInput placeholder="Units" formControlName="field5">
+                            <mat-error
+                                *ngIf="(form1.controls.field5.touched && form1.controls.field5.invalid) || (form1.controls.field5.invalid && isFormSubmitted && !form1.controls.field5.dirty) || (form1.controls.field5.touched && !form1.controls.field5.dirty)">
+                                *Service is required.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="sub_field">
+                        <mat-form-field appearance="fill">
+                            <input matInput placeholder="Discounts (in Amount)" formControlName="field6">
+                            <mat-error
+                                *ngIf="(form1.controls.field6.touched && form1.controls.field6.invalid) || (form1.controls.field6.invalid && isFormSubmitted && !form1.controls.field6.dirty) || (form1.controls.field6.touched && !form1.controls.field6.dirty)">
+                                *Set Discounts field is required.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <!-- <div class="sub_field">
+                        <div class="my-input" [ngClass]="{'state-my-input--active': isFocused || someValue}">
+                            <div class="my-input__wrapper">
+                                <label class="my-input__label">Service Tariff - Regular</label>
+                                <input type="text" class="my-input__input" (blur)="isFocused = false"
+                                    (focus)="isFocused = true">
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="btns">
+                    <button (click)="saveForm()" class="btn btn-success">
+                        <i class="fas fa-plus"></i> Add
+                    </button>
+                    <button (click)="clearForm()" class="btn btn-secondary">
+                        <i class="fas fa-eraser"></i> Clear
+                    </button>
+                </div>
+            </form>
+        </mat-tab>
+        <mat-tab label="Room Billing">
+            <form [formGroup]="form2">
+                <div class="fields1">
+                    <div class="sub_field">
+                        <h4>Ward</h4>
+                        <mat-form-field appearance="fill">
+                            <mat-select formControlName="field11">
+                                <mat-option value="" disabled>Please Select</mat-option>
+                                <mat-option *ngFor="let type of wardType" [value]="type.name">
+                                    {{type.name}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error
+                                *ngIf="(form2.controls.field11.invalid && isFormSubmitted1 && !form2.controls.field11.dirty) || (form2.controls.field11.touched && !form2.controls.field11.dirty)">
+                                *Ward Type is required.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="sub_field">
+                        <h4>Room Type</h4>
+                        <mat-form-field appearance="fill">
+                            <mat-select formControlName="field12">
+                                <mat-option value="" disabled>Select Category</mat-option>
+                                <mat-option *ngFor="let i of roomType" [value]="i.category">
+                                    {{i.category}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error
+                                *ngIf="(form2.controls.field12.invalid && isFormSubmitted1 && !form2.controls.field12.dirty) || (form2.controls.field12.touched && !form2.controls.field12.dirty)">
+                                *Select category is required.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="sub_field">
+                        <h4>Room</h4>
+                        <mat-form-field appearance="fill">
+                            <mat-select formControlName="field13">
+                                <mat-option value="" disabled>Please Select</mat-option>
+                                <mat-option value="1">1</mat-option>
+                                <mat-option value="2">2</mat-option>
+                                <mat-option value="3">3</mat-option>
+                                <mat-option value="4">4</mat-option>
+                            </mat-select>
+                            <mat-error
+                                *ngIf="(form2.controls.field13.invalid && isFormSubmitted1 && !form2.controls.field13.dirty) || (form2.controls.field13.touched && !form2.controls.field13.dirty)">
+                                *Select Room is required.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="sub_field">
+                        <h4>Bed</h4>
+                        <mat-form-field appearance="fill">
+                            <mat-select (valueChange)="setTariff($event)" formControlName="field14">
+                                <mat-option value="" disabled>Please Select</mat-option>
+                                <mat-option value="1">1</mat-option>
+                                <mat-option value="3">3</mat-option>
+                                <mat-option value="5">5</mat-option>
+                                <mat-option value="7">7</mat-option>
+                                <mat-option value="9">9</mat-option>
+                            </mat-select>
+                            <mat-error
+                                *ngIf="(form2.controls.field14.invalid && isFormSubmitted1 && !form2.controls.field14.dirty) || (form2.controls.field14.touched && !form2.controls.field14.dirty)">
+                                *Select Bed is required.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="sub_field cust">
+                        <mat-form-field appearance="fill">
+                            <input matInput readonly="true" placeholder="Tariff" formControlName="field15">
+                            <mat-error
+                                *ngIf="(form2.controls.field15.invalid && isFormSubmitted1 && !form2.controls.field15.dirty) || (form2.controls.field15.touched && !form2.controls.field15.dirty)">
+                                *Field is required.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="sub_field">
+                        <mat-form-field appearance="fill">
+                            <input matInput placeholder="Units" formControlName="field16">
+                        </mat-form-field>
+                        <mat-error
+                            *ngIf="(form2.controls.field16.touched && form2.controls.field16.invalid) || (form2.controls.field16.invalid && isFormSubmitted1 && !form2.controls.field16.dirty) || (form2.controls.field16.touched && !form2.controls.field16.dirty)">
+                            *Select Units is required.
+                        </mat-error>
+                    </div>
+                    <div class="sub_field">
+                        <mat-form-field appearance="fill">
+                            <input matInput placeholder="Discounts (in Amount)" formControlName="field17">
+                        </mat-form-field>
+                        <mat-error
+                            *ngIf="(form2.controls.field17.touched && form2.controls.field17.invalid) || (form2.controls.field17.invalid && isFormSubmitted1 && !form2.controls.field17.dirty) || (form2.controls.field17.touched && !form2.controls.field17.dirty)">
+                            *Select Discounts is required.
+                        </mat-error>
+                    </div>
+                    <!-- <div class="sub_field">
+                        <div class="my-input" [ngClass]="{'state-my-input--active': isFocused || someValue}">
+                            <div class="my-input__wrapper">
+                                <label class="my-input__label">Service Tariff - Regular</label>
+                                <input type="text" class="my-input__input" (blur)="isFocused = false"
+                                    (focus)="isFocused = true">
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="btns">
+                    <button  (click)="saveForm1()" class="btn btn-success">
+                        <i  class="fas fa-plus"></i> Add
+                    </button>
+                    <button (click)="clearForm1()" class="btn btn-secondary">
+                        <i  class="fas fa-eraser"></i> Clear
+                    </button>
+                </div>
+            </form>
+        </mat-tab>
+    </mat-tab-group>
+    <h2>Bill Summary</h2>
+    <table class="table table-bordered mt-4">
+        <thead>
+            <tr>
+                <th style="width: 120px;">Sr No.</th>
+                <th scope="col">Particulars</th>
+                <th style="width: 180px;" scope="col">Tariff</th>
+                <th style="width: 180px;" scope="col">Units</th>
+                <th style="width: 180px;" scope="col">Discount(in Amount)</th>
+                <th style="width: 180px;" scope="col">Gross Total</th>
+                <th style="width: 180px;" scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let i of this.form3.get('array').value; index as j">
+    <td class="text-center">{{j+1}}</td>
+    <td class="text-center">
+        <label>{{i.field2}}/{{i.field3}}</label>
+    </td>
+    <td class="text-center">
+        <label>{{i.field4}}</label>
+    </td>
+    <td class="text-center">
+        <mat-form-field appearance="fill">
+            <input #myinp matInput (change)="change_value(myinp,j)"  [disabled]="!i.editable" placeholder="Tariff" [value]="i.field5">
+        </mat-form-field>
+    </td>
+    <td class="text-center">
+        <mat-form-field appearance="fill">
+            <input matInput (change)="change_value1(myinp,j)" [disabled]="!i.editable" placeholder="Tariff" [value]="i.field6">
+        </mat-form-field>
+    </td>
+    <td class="text-center">
+        <label>{{i.field5}} * {{i.field6}}</label>
+    </td>
+    <td class="text-center">
+        <div style="display: flex; justify-content: center;align-items: center; gap: 15px;" class="action">
+            <i (click)="edit(i, j)" style="color: rgb(0, 94, 255);" class="fas fa-edit"></i>
+            <i (click)="deleteField(i)" style="color: red;" class="fas fa-trash"></i>
+        </div>
+    </td>
+</tr>
+
+        </tbody>
+    </table>
+    <div class="btns">
+        <button (click)="submitForm()" class="btn btn-success">
+            Submit
+        </button>
+    </div>
+</div>
