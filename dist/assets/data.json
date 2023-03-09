@@ -1,0 +1,160 @@
+{
+
+    "nameCat": [
+        {
+            "uuid":1,
+            "name":"Nakul Verma",
+            "code":"CE072",
+            "is_active":true,
+            "status":"completed",
+            "created_date": "2023-02-07",
+            "description": "computer engineering student"
+        },
+        {
+            "uuid":2,
+            "name":"Neel Lad",
+            "code":"CE082",
+            "is_active":true,
+            "status":"pending",
+            "created_date": "2023-01-25",
+            "description": "student at PP Savani University"
+        },
+        {
+            "uuid":3,
+            "name":"Riddesh Parekh",
+            "code":"CE078",
+            "is_active":true,
+            "status": "on progress",
+            "created_date": "2023-01-31",
+            "description": "computer engineering student at PPSU"
+        },
+        {
+            "uuid":4,
+            "name":"Sunny Suthar",
+            "code":"CE064",
+            "is_active":true,
+            "status":"completed",
+            "created_date": "2023-02-01",
+            "description": "Pursuing CSE at PPSU"
+        }
+    ],
+    "degreeCat": [
+        {
+            "uuid":1,
+            "courseName":"Computer engineering",
+            "duration":"4 Year",
+            "Branch":"School of Engineering"
+        },
+        {
+            "uuid":2,
+            "courseName":"Information Technology",
+            "duration":"4 Year",
+            "Branch":"School of Engineering"
+        },
+        {
+            "uuid":3,
+            "courseName":"BSC.IT",
+            "duration":"3 Year",
+            "Branch":"School of Science"
+        },
+        {
+            "uuid":4,
+            "courseName":"BHMS",
+            "duration":"4 Year",
+            "Branch":"School of Homeopathy"
+        }
+    ],
+    "serviceCat":[
+        {
+            "id" : 1,
+            "catName": "Deluxe Suites",
+            "Tariff":"28450"
+        },
+        {
+            "id" : 2,
+            "catName": "Single Super Deluxe Rooms",
+            "Tariff":23500
+        },
+        {
+            "id" : 3,
+            "catName": "Single Deluxe Rooms",
+            "Tariff":11250
+        },
+        {
+            "id" : 4,
+            "catName": "Single Private Rooms",
+            "Tariff":9450
+        },
+        {
+            "id" : 5,
+            "catName": "Economy",
+            "Tariff":3200
+        }      
+    ],
+    "service":[
+        {
+            "id": 1,
+            "name":"MEDICAL ICU"
+        },
+        {
+            "id": 2,
+            "name":"NEURO ICU"
+        },
+        {
+            "id": 3,
+            "name":"C.T.V.S - ICU"
+        },
+        {
+            "id": 4,
+            "name":"HDU Single Room"
+        },
+        {
+            "id": 5,
+            "name":"HDU Sharing Room"
+        }
+    ],
+    "wardType":[
+        {
+            "id": 1,
+            "name": "General" 
+        },
+        {
+            "id": 2,
+            "name": "ICU" 
+        },
+        {
+            "id": 3,
+            "name": "Special Ward" 
+        },
+        {
+            "id": 4,
+            "name": "ICCU" 
+        },
+        {
+            "id": 5,
+            "name": "Deluxe Room" 
+        }
+    ],
+    "roomType":[
+        {
+            "category":"Twin Sharing Room",
+            "price":2500
+        },
+        {
+            "category":"Super Deluxe Room",
+            "price":2800
+        },
+        {
+            "category":"Premium Deluxe Room",
+            "price":3000
+        },
+        {
+            "category":"Suite",
+            "price":3300
+        },
+        {
+            "category":"Single Private Room",
+            "price":3500
+        }
+    ]
+}
